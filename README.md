@@ -24,9 +24,12 @@ But this is for _an R package_ rather than an embedded deviced where we are coun
 most minimal _immediate_ R installation I could get hands on is [37400 kByte](https://packages.debian.org/sid/r-base-core) 
 (reported size of package `r-base-core` in Debian 'sid' on amd64).  That is _before_ any recommended packages are installed.
 Hence the difference of 46 kB between C and C++ use is about 0.00096 per cent of the _most minimal_ R installation.  For
-reference, my `/usr/local/lib/R/site-library` currently clocks in at 948 mB (but that may not be representative).
+reference, my `/usr/local/lib/R/site-library` currently clocks in at 948 mB (but that may not be representative).  Another
+comparison is between the official `r-base` Docker imagine (which we provide via the
+[Rocker](https://www.rocker-project.org/) project container too) versus the Debian testing images it is derived from: 
+649 mB versus 114 mB.  So if working with R add over 500 mB to a system, is debating 46 kB _really_ worth it?
 
-So I am sure _someone_ cares about such "bloat" of less than 1/1000 of the size of the most minimal (and hence barely
+But I am sure _someone_ cares about such "bloat" of less than 1/1000 of the size of the most minimal (and hence barely
 useable) R installation.  But I don't think I do _given it gets me the code shown below_.  Your mileage may, as they say,
 vary.
 
@@ -166,7 +169,7 @@ Rcpp::NumericVector convolve5cpp(Rcpp::NumericVector & xa,
 ### Summary
 
 It is good to have choices. _Writing R Extensions_ is pretty explicit about supporting languages other than C for R
-extension. 
+extensions. 
 
 As it should be.  Because 
 [Chambers (2016)](https://books.google.com/books?id=kxxjDAAAQBAJ&printsec=frontcover&source=gbs_ge_summary_r&cad=0#v=onepage&q&f=false) 
@@ -187,7 +190,7 @@ To me, these two always implied the element of minimal surprise. Allow us to do 
 simple that is limiting) with _sufficient performance_ to allow new exploration.  And Rcpp is still my preferred tool
 balancing the multiple objectives of _speed_, _ease of use_ and _clarity_.  
 
-But different people will find different solutions preferable, and that is fine.  We have a big tent on purpose.  
+But different people will find different solutions preferable, and that is fine.  We have a big tent on purpose.
 May the best tool win.  Rcpp is doing quite allright by that measure as we recently
 [passed a million downloads a month](https://twitter.com/eddelbuettel/status/1109213329971650560) while enabling over
 sixteen hundred other packages on CRAN to do what they do.
