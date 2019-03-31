@@ -1,0 +1,2 @@
+useDynLib(badpkgWithoutRcpp, .registration=TRUE)
+exportPattern("^[[:alpha:]]+")
